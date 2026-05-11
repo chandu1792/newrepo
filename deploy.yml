@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydeploy
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deploy
+
+  template:
+    metadata:
+      labels:
+        app: deploy
+
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo 'chandu'; sleep 10; done"]
